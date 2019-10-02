@@ -28,7 +28,10 @@
 <!-- Load IFM Core JavaScript -->
 <script src="ifm-core.js"></script>
 <script>
-    const ifmCore = new IFMCore();
+    const ifmCore = new IFMCore('ifm-features',
+        {
+            src: './features.jpg'
+        });
 </script>
 </body>
 </html>
