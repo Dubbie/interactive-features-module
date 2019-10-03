@@ -52,13 +52,27 @@
         btn.classList.add('ifm-core-btn');
         btn.style.top = data.y;
         btn.style.left = data.x;
+
+        // Handle other alignments
+        if (data.hAlign && data.hAlign.toLocaleLowerCase() === 'right') {
+            btn.style.left = 'auto';
+            btn.style.right = data.x;
+        }
+        if (data.vAlign && data.vAlign.toLocaleLowerCase() === 'bottom') {
+            btn.style.top = 'auto';
+            btn.style.bottom = data.y;
+        }
+
+        // Fallback
         btn.title = data.text;
 
         btn.addEventListener('mouseenter', e => {
             updateTooltip(this, data);
+            btn.title = '';
         });
 
         btn.addEventListener('mouseleave', e => {
+            btn.title = data.text;
             hideTooltip(this);
         });
 
@@ -68,10 +82,31 @@
 
     function updateTooltip(ifm, data) {
         const tooltip = ifm.tooltip;
+
+        // Reset tooltip
+        tooltip.style.removeProperty('top');
+        tooltip.style.removeProperty('right');
+        tooltip.style.removeProperty('bottom');
+        tooltip.style.removeProperty('left');
+        tooltip.style.removeProperty('margin-top');
+        tooltip.style.removeProperty('margin-bottom');
+
+        // Show now
         tooltip.classList.add('ifm-core-show');
         tooltip.innerText = data.text;
-        tooltip.style.left = data.x;
         tooltip.style.top = data.y;
+        tooltip.style.left = data.x;
+
+        if (data.hAlign && data.hAlign.toLocaleLowerCase() === 'right') {
+            tooltip.style.left = 'auto';
+            tooltip.style.right = data.x;
+        }
+        if (data.vAlign && data.vAlign.toLocaleLowerCase() === 'bottom') {
+            tooltip.style.top = 'auto';
+            tooltip.style.bottom = data.y;
+            tooltip.style.marginTop = '0';
+            tooltip.style.marginBottom = 'calc(25px + 10px)';
+        }
 
         ifm.tooltip = tooltip;
     }
