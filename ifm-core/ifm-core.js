@@ -1,5 +1,4 @@
 (function () {
-    // Define the constructor
     this.IFMCore = function () {
         this.el = null;
         this.id = null;
@@ -47,6 +46,10 @@
         buildElement(this);
     };
 
+    /**
+     * Creates a button on the IFM Container with the proper attributes
+     * @param data
+     */
     function createFeatureButton(data) {
         const btn = document.createElement('span');
         btn.classList.add('ifm-core-btn');
@@ -80,6 +83,11 @@
         this.el.children[0].appendChild(btn);
     }
 
+    /**
+     * Updates the IFM Tooltip with proper attributes
+     * @param ifm
+     * @param data
+     */
     function updateTooltip(ifm, data) {
         const tooltip = ifm.tooltip;
 
@@ -111,11 +119,18 @@
         ifm.tooltip = tooltip;
     }
 
+    /**
+     * Hides the IFM Tooltip element
+     * @param ifm
+     */
     function hideTooltip(ifm) {
         ifm.tooltip.classList.remove('ifm-core-show');
     }
 
-
+    /**
+     * Builds the IFM Container, Image and Tooltip elements
+     * @param IFM
+     */
     function buildElement(IFM) {
         const container = document.createElement('div');
         container.id = IFM.id + '-container';
