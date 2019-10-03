@@ -19,23 +19,32 @@
 <div class="container">
     <main id="main" class="p-5 my-5">
         <h1 class="font-weight-bold">Interactive Features Module</h1>
-        <p>A <b>native JavaScript</b> plugin that enables you to produce interactive points on an image where you can describe
+        <p>A <b>native JavaScript</b> plugin that enables you to produce interactive points on an image where you can
+            describe
             what feature is being seen.</p>
 
         <!-- IFM Features-->
-        <div id="ifm-features"></div>
+        <div id="ifm-features" class="ifm-core"></div>
     </main>
 </div>
-<!-- Load IFM Core JavaScript -->
-<script src="./ifm-core/ifm-core.js"></script>
-<script>
-    const ifm = new IFMCore('ifm-features', {
-        src: './features.jpg'
-    });
 
-    ifm.addFeature({x: '5%', y: '5%', text: 'Intuitive'});
-    ifm.addFeature({x: '5%', y: '5%', text: 'Object Oriented approach', hAlign: 'right'});
-    ifm.addFeature({x: '5%', y: '5%', text: 'Easily readable code', vAlign: 'bottom'});
-</script>
+    <!-- Load IFM Core JavaScript -->
+    <script src="./ifm-core/ifm-core.js"></script>
+    <script>
+        const ifm = new IFMCore('ifm-features', {
+            src: './code-sample.png'
+        });
+
+        ifm.addFeature({x: '42%', y: '10%', text: 'All you need to include is the single JavaScript file.'});
+        ifm.addFeature({x: '2%', y: '57%', text: 'Add your features easily in a single function', vAlign: 'bottom'});
+        ifm.addFeature({
+            x: '6%',
+            y: '53%',
+            text: 'Easily customize where your buttons go',
+            hAlign: 'right',
+            vAlign: 'bottom'
+        });
+    </script>
+
 </body>
 </html>

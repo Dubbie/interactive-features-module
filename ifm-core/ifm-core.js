@@ -5,9 +5,9 @@
         this.tooltip = null;
         this.debug = true;
         this.options = {
-            width: '100%',
-            height: '500px',
-            src: './features.png',
+            width: '',
+            height: '',
+            src: '',
         };
         this.addFeature = createFeatureButton;
 

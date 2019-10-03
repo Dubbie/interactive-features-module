@@ -1,5 +1,10 @@
+.ifm-core {
+    text-align: center;
+}
+
 .ifm-core-container {
     position: relative;
+    display: inline-block;
 }
 
 .ifm-core-image {
