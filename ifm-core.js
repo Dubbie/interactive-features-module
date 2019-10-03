@@ -3,12 +3,14 @@
     this.IFMCore = function () {
         this.el = null;
         this.id = null;
+        this.tooltip = null;
         this.debug = true;
         this.options = {
             width: '100%',
             height: '500px',
             src: './features.png',
         };
+        this.addFeature = createFeatureButton;
 
         // Based on the arguments, find the element first
         if (arguments.length === 0) {
@@ -31,7 +33,7 @@
             }
         }
 
-        //
+        // Extend defaults
         if (arguments.length === 2 && typeof arguments[1] === 'object') {
             const opts = arguments[1];
             for (const prop in opts) {
@@ -45,6 +47,40 @@
         buildElement(this);
     };
 
+    function createFeatureButton(data) {
+        const btn = document.createElement('span');
+        btn.classList.add('ifm-core-btn');
+        btn.style.top = data.y;
+        btn.style.left = data.x;
+        btn.title = data.text;
+
+        btn.addEventListener('mouseenter', e => {
+            updateTooltip(this, data);
+        });
+
+        btn.addEventListener('mouseleave', e => {
+            hideTooltip(this);
+        });
+
+        // Add this button to the container
+        this.el.children[0].appendChild(btn);
+    }
+
+    function updateTooltip(ifm, data) {
+        const tooltip = ifm.tooltip;
+        tooltip.classList.add('ifm-core-show');
+        tooltip.innerText = data.text;
+        tooltip.style.left = data.x;
+        tooltip.style.top = data.y;
+
+        ifm.tooltip = tooltip;
+    }
+
+    function hideTooltip(ifm) {
+        ifm.tooltip.classList.remove('ifm-core-show');
+    }
+
+
     function buildElement(IFM) {
         const container = document.createElement('div');
         container.id = IFM.id + '-container';
@@ -55,10 +91,17 @@
         image.src = IFM.options.src;
         image.style.maxWidth = '100%';
 
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('ifm-core-tooltip');
+
+        // Add elements to container
         container.appendChild(image);
+        container.appendChild(tooltip);
 
         // Append the newly created container to the given element
         IFM.el.appendChild(container);
+        // Update tooltip
+        IFM.tooltip = tooltip;
     }
 
     function error(message) {

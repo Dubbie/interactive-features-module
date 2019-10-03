@@ -19,19 +19,21 @@
 <div class="container">
     <main id="main" class="p-5 my-5">
         <h1 class="font-weight-bold">Interactive Features Module</h1>
-        <p>A native JavaScript plugin that enables you to produce interactive points on an image where you can describe
+        <p>A <b>native JavaScript</b> plugin that enables you to produce interactive points on an image where you can describe
             what feature is being seen.</p>
 
-        <div id="ifm-features" class="ifm-core"></div>
+        <!-- IFM Features-->
+        <div id="ifm-features"></div>
     </main>
 </div>
 <!-- Load IFM Core JavaScript -->
 <script src="ifm-core.js"></script>
 <script>
-    const ifmCore = new IFMCore('ifm-features',
-        {
-            src: './features.jpg'
-        });
+    const ifm = new IFMCore('ifm-features', {
+        src: './features.jpg'
+    });
+
+    ifm.addFeature({'x': '5%', 'y': '5%', 'text': 'Intuitive'});
 </script>
 </body>
 </html>
