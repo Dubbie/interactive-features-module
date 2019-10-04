@@ -12,10 +12,94 @@ body {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 1.25rem;
 }
 
 h1, h2, h3 {
     line-height: 1.2;
+}
+
+ul {
+
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: calc(960px + 30px);
+    }
+}
+
+.btn-cta {
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #40bd92;
+    padding: 0.75rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    transition: all 250ms ease-in-out;
+}
+
+.btn-cta:hover {
+    color: #ffffff;
+    background-color: #3fc89d;
+    box-shadow: 0 calc(0.25rem + 2px) 4px rgba(0, 0, 0, 0.18),
+                0 0.25rem 0 0 #40bd92;
+    transform: translateY(-0.25rem);
+}
+
+#hero {
+    min-height: 100vh;
+}
+
+#get-started {
+    background-color: black;
+    color: #eeeeee;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: 1rem;
+}
+
+#get-started .text-muted {
+    color: #cccccc !important;
+}
+
+.code-toolbar {
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+
+div.code-toolbar > .toolbar {
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+    display: flex;
+}
+
+.table-dark {
+    color: #cccccc;
+    background-color: #2d2d2d;
+}
+
+.table thead th {
+    color: #ffffff;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.table td {
+    padding: 0.5rem 1rem;
+}
+
+.table th {
+    padding: 1rem;
+}
+
+footer {
+    font-size: 0.75rem;
+    background-color: #2d2d2d;
+    color: #999999;
+    padding: 5vh 0;
 }

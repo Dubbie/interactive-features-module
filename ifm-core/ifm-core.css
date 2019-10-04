@@ -41,6 +41,7 @@
 
 .ifm-core-tooltip.ifm-core-show {
     opacity: 1;
+    z-index: 99999;
 }
 
 @keyframes pulse-white {

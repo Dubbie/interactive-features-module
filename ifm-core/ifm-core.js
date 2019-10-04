@@ -51,6 +51,10 @@
      * @param data
      */
     function createFeatureButton(data) {
+        if (!data.hasOwnProperty('x') || !data.hasOwnProperty('y') || !data.hasOwnProperty('text')) {
+            error('Can\'t create feature button, missing parameters (Required: x, y, text)');
+        }
+
         const btn = document.createElement('span');
         btn.classList.add('ifm-core-btn');
         btn.style.top = data.y;

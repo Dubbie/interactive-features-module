@@ -7,44 +7,153 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Interactive Features Module</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- 3rdParty -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./prism.css">
 
     <!-- Base site & IFM Core CSS -->
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./ifm-core/ifm-core.css">
+    <script defer src="./ifm-core/ifm-core.js"></script>
 </head>
 <body>
-<div class="container">
-    <main id="main" class="p-5 my-5">
-        <h1 class="font-weight-bold">Interactive Features Module</h1>
-        <p>A <b>native JavaScript</b> plugin that enables you to produce interactive points on an image where you can
-            describe
-            what feature is being seen.</p>
+<main id="main">
+    <section id="hero" class="p-5 d-flex justify-content-center align-items-center">
+        <div class="container text-center">
+            <h1 class="font-weight-bold mb-4">Interactive Features Module</h1>
+            <p class="mb-4 text-muted">A <b>native JavaScript</b> plugin that enables you to produce interactive
+                feature points on an image where
+                you can
+                describe
+                what feature is being seen.</p>
 
-        <!-- IFM Features-->
-        <div id="ifm-features" class="ifm-core"></div>
-    </main>
-</div>
+            <div class="text-center mb-5">
+                <a href="#get-started" class="btn btn-cta mr-2">Get Started</a>
+                <a href="https://github.com/Dubbie/interactive-features-module"
+                   class="btn btn-link font-weight-bold text-muted">Download</a>
+            </div>
 
-    <!-- Load IFM Core JavaScript -->
-    <script src="./ifm-core/ifm-core.js"></script>
-    <script>
+            <!-- IFM Features-->
+            <div id="ifm-features" class="ifm-core"></div>
+        </div>
+    </section>
+    <section id="get-started">
+        <div class="container">
+            <h2 class="font-weight-bold">Getting started</h2>
+            <p class="lead mb-5">Setting up Interactive Features Module is a really simple task. You can find all the
+                required files by downloading it from the project's
+                <a href="https://github.com/Dubbie/interactive-features-module">GitHub page</a>.</p>
+
+            <h4 class="font-weight-bold mb-1">CSS</h4>
+            <p>Copy-paste the downloaded stylesheet <code>&lt;link&gt;</code> into your <code>&lt;head&gt;</code>.</p>
+
+            <pre class="mb-5"><code
+                    class="language-css">&lt;link rel="stylesheet" href="/ifm-core/ifm-core.css"&gt;</code></pre>
+
+            <h4 class="font-weight-bold mb-1">JavaScript</h4>
+            <p class="mb-0">To have faster loading times I recommend putting the <code>&lt;script&gt;</code> into your
+                <code>&lt;head&gt;</code> element with the <code>defer</code> attribute.</p>
+
+            <pre class="mb-2"><code
+                    class="language-css">&lt;script defer src="/ifm-core/ifm-core.js"&gt;&lt;/script&gt;</code></pre>
+
+            <p class="mb-5">After the <code>&lt;script&gt;</code> has been loaded you can start using the module.</p>
+            <p>Here is an example code which produces the interactive feature image seen at the top of this page.</p>
+
+            <pre><code class="language-js">&lt;script&gt;
+    // As soon as the DOM is ready, initialize IFM Core
+    document.addEventListener('DOMContentLoaded', () => {
         const ifm = new IFMCore('ifm-features', {
             src: './code-sample.png'
         });
 
-        ifm.addFeature({x: '42%', y: '10%', text: 'All you need to include is the single JavaScript file.'});
-        ifm.addFeature({x: '2%', y: '57%', text: 'Add your features easily in a single function', vAlign: 'bottom'});
         ifm.addFeature({
-            x: '6%',
-            y: '53%',
-            text: 'Easily customize where your buttons go',
+            x: '2%',
+            y: '19%',
+            text: 'Create an IFM object with the options you want.'
+        });
+        ifm.addFeature({
+            x: '2%',
+            y: '57%',
+            text: 'Add your features easily in a single function',
+            vAlign: 'bottom'
+        });
+        ifm.addFeature({
+            x: '19%',
+            y: '41%',
+            text: 'Easily set the placement of your buttons',
             hAlign: 'right',
             vAlign: 'bottom'
         });
-    </script>
+    });
+&lt;/script&gt;
+</code></pre>
+            <p class="mb-0">That's it! All you have to do is create an IFM object, then use the <b>addFeature</b> method
+                of the IFM object.</p>
+            <p class="mb-4">The addFeature method requires at least 3 parameters to work:</p>
 
+            <table class="table table-dark table-borderless">
+                <thead>
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="font-weight-bold">x</td>
+                    <td>Position of the button horizontally</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">y</td>
+                    <td>Position of the button vertically</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">text</td>
+                    <td>Text shown on hover</td>
+                </tr>
+                <tr>
+                    <td><i>hAlign (Optional)</i></td>
+                    <td>Horizontal alignment of the button</td>
+                </tr>
+                <tr>
+                    <td><i>vAlign (Optional)</i></td>
+                    <td>Vertical alignment of the button</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer id="footer">
+        <div class="container">
+            <p class="mb-0">Created and maintained with ♥ by <b><a href="https://dubbie.github.io" class="text-decoration-none text-white">Mihó Dániel</a></b>.</p>
+        </div>
+    </footer>
+</main>
+<script>
+    // As soon as the DOM is ready, initialize IFM Core
+    document.addEventListener('DOMContentLoaded', () => {
+        const ifm = new IFMCore('ifm-features', {
+            src: './code-sample.png'
+        });
+
+        ifm.addFeature({
+            x: '2%',
+            y: '19%',
+            text: 'Create an IFM object with the options you want.'
+        });
+        ifm.addFeature({x: '2%', y: '57%', text: 'Add your features easily in a single function', vAlign: 'bottom'});
+        ifm.addFeature({
+            x: '19%',
+            y: '41%',
+            text: 'Easily set the placement of your buttons',
+            hAlign: 'right',
+            vAlign: 'bottom'
+        });
+    });
+</script>
+
+<script src="./prism.js"></script>
 </body>
 </html>
