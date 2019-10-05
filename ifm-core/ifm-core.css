@@ -31,12 +31,39 @@
     left: 0;
     background-color: #ffffff;
     font-size: 14px;
-    margin-top: calc(25px + 10px);
+    margin-top: calc(25px + 10px + 5px);
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
     opacity: 0;
     transition: opacity 250ms ease-in-out;
+}
+
+.ifm-core-tooltip.ifm-core-tooltip-bottom {
+    margin-top: 0;
+    margin-bottom: calc(25px + 10px + 5px);
+}
+
+.ifm-core-tooltip::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: calc((25px - 10px) / 2);
+    border: solid 5px transparent;
+    border-bottom-color: #ffffff;
+}
+
+.ifm-core-tooltip.ifm-core-tooltip-right::before {
+    left: auto;
+    right: calc((25px - 10px) / 2);
+}
+
+.ifm-core-tooltip.ifm-core-tooltip-bottom::before {
+    top: auto;
+    bottom: -10px;
+    border-bottom-color: transparent;
+    border-top-color: #ffffff;
 }
 
 .ifm-core-tooltip.ifm-core-show {

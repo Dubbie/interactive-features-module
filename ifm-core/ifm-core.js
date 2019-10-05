@@ -88,6 +88,8 @@
         tooltip.style.removeProperty('left');
         tooltip.style.removeProperty('margin-top');
         tooltip.style.removeProperty('margin-bottom');
+        tooltip.classList.remove('ifm-core-tooltip-right');
+        tooltip.classList.remove('ifm-core-tooltip-bottom');
 
         // Show now
         tooltip.classList.add('ifm-core-show');
@@ -98,12 +100,12 @@
         if (data.hAlign && data.hAlign.toLocaleLowerCase() === 'right') {
             tooltip.style.left = 'auto';
             tooltip.style.right = data.x;
+            tooltip.classList.add('ifm-core-tooltip-right');
         }
         if (data.vAlign && data.vAlign.toLocaleLowerCase() === 'bottom') {
             tooltip.style.top = 'auto';
             tooltip.style.bottom = data.y;
-            tooltip.style.marginTop = '0';
-            tooltip.style.marginBottom = 'calc(25px + 10px)';
+            tooltip.classList.add('ifm-core-tooltip-bottom');
         }
 
         this.tooltip = tooltip;
