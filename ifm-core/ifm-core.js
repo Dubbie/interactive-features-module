@@ -9,7 +9,6 @@
             height: '',
             src: '',
         };
-        this.addFeature = createFeatureButton;
 
         // Based on the arguments, find the element first
         if (arguments.length === 0) {
@@ -23,14 +22,6 @@
 
         // Find the correct ID
         this.el = document.getElementById(this.id);
-        if (this.debug) {
-            if (this.el) {
-                logMessage('-- DOM Element found --');
-                console.log(this.el);
-            } else {
-                error('Could not find DOM element with ID: ' + this.id);
-            }
-        }
 
         // Extend defaults
         if (arguments.length === 2 && typeof arguments[1] === 'object') {
@@ -50,11 +41,7 @@
      * Creates a button on the IFM Container with the proper attributes
      * @param data
      */
-    function createFeatureButton(data) {
-        if (!data.hasOwnProperty('x') || !data.hasOwnProperty('y') || !data.hasOwnProperty('text')) {
-            error('Can\'t create feature button, missing parameters (Required: x, y, text)');
-        }
-
+    IFMCore.prototype.addFeature = function(data) {
         const btn = document.createElement('span');
         btn.classList.add('ifm-core-btn');
         btn.style.top = data.y;
@@ -74,26 +61,25 @@
         btn.title = data.text;
 
         btn.addEventListener('mouseenter', e => {
-            updateTooltip(this, data);
+            this.updateTooltip(data);
             btn.title = '';
         });
 
         btn.addEventListener('mouseleave', e => {
             btn.title = data.text;
-            hideTooltip(this);
+            this.hideTooltip();
         });
 
         // Add this button to the container
         this.el.children[0].appendChild(btn);
-    }
+    };
 
     /**
      * Updates the IFM Tooltip with proper attributes
-     * @param ifm
      * @param data
      */
-    function updateTooltip(ifm, data) {
-        const tooltip = ifm.tooltip;
+    IFMCore.prototype.updateTooltip = function(data) {
+        const tooltip = this.tooltip;
 
         // Reset tooltip
         tooltip.style.removeProperty('top');
@@ -120,16 +106,15 @@
             tooltip.style.marginBottom = 'calc(25px + 10px)';
         }
 
-        ifm.tooltip = tooltip;
-    }
+        this.tooltip = tooltip;
+    };
 
     /**
-     * Hides the IFM Tooltip element
-     * @param ifm
+     * Hides the currently shown tooltip
      */
-    function hideTooltip(ifm) {
-        ifm.tooltip.classList.remove('ifm-core-show');
-    }
+    IFMCore.prototype.hideTooltip = function() {
+        this.tooltip.classList.remove('ifm-core-show');
+    };
 
     /**
      * Builds the IFM Container, Image and Tooltip elements
@@ -158,12 +143,13 @@
         IFM.tooltip = tooltip;
     }
 
+    /**
+     * Throws an error with a message
+     * @param message
+     * @returns {boolean}
+     */
     function error(message) {
         console.error('IFMCore: ' + message);
         return false;
-    }
-
-    function logMessage(message) {
-        console.log('IFMCore: ' + message);
     }
 }());
