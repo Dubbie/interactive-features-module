@@ -46,6 +46,7 @@
         btn.classList.add('ifm-core-btn');
         btn.style.top = data.y;
         btn.style.left = data.x;
+        btn.title = data.text;
 
         // Handle other alignments
         if (data.hAlign && data.hAlign.toLocaleLowerCase() === 'right') {
@@ -56,9 +57,6 @@
             btn.style.top = 'auto';
             btn.style.bottom = data.y;
         }
-
-        // Fallback
-        btn.title = data.text;
 
         btn.addEventListener('mouseenter', e => {
             this.updateTooltip(data);
@@ -72,6 +70,11 @@
 
         // Add this button to the container
         this.el.children[0].appendChild(btn);
+
+        // Creates the mobile element
+        const li = document.createElement('li');
+        li.textContent = data.text;
+        this.mobileContainer.appendChild(li);
     };
 
     /**
@@ -125,6 +128,9 @@
         container.id = IFM.id + '-container';
         container.classList.add('ifm-core-container');
 
+        const mobileContainer = document.createElement('ul');
+        mobileContainer.classList.add('ifm-core-mobile-container');
+
         const image = document.createElement('img');
         image.classList.add('ifm-core-image');
         image.src = IFM.options.src;
@@ -135,12 +141,15 @@
 
         // Add elements to container
         container.appendChild(image);
+        container.appendChild(mobileContainer);
         container.appendChild(tooltip);
 
         // Append the newly created container to the given element
         IFM.el.appendChild(container);
         // Update tooltip
         IFM.tooltip = tooltip;
+        // Update mobile container
+        IFM.mobileContainer = mobileContainer;
     }
 
     /**

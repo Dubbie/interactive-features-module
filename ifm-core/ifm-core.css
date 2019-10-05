@@ -71,6 +71,28 @@
     z-index: 99999;
 }
 
+.ifm-core-mobile-container {
+    display: none;
+    margin-top: 1rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+/* Responsivity */
+@media screen and (max-width: 768px) {
+    .ifm-core-mobile-container {
+        display: block;
+    }
+
+    .ifm-core-btn {
+        display: none;
+    }
+
+    .ifm-core-tooltip {
+        display: none;
+    }
+}
+
 @keyframes pulse-white {
     0% {
         box-shadow: inset 0 -4px 4px rgba(0, 0, 0, 0.16),
