@@ -96,7 +96,7 @@
 
         // Show now
         tooltip.classList.add('ifm-core-show');
-        tooltip.innerText = data.text;
+        tooltip.innerHTML = data.text;
         tooltip.style.top = data.y;
         tooltip.style.left = data.x;
 
