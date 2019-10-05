@@ -107,8 +107,6 @@
             tooltip.style.bottom = data.y;
             tooltip.classList.add('ifm-core-tooltip-bottom');
         }
-
-        this.tooltip = tooltip;
     };
 
     /**
