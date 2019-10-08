@@ -73,7 +73,7 @@
 
         // Creates the mobile element
         const li = document.createElement('li');
-        li.textContent = data.text;
+        li.innerHTML = data.text;
         this.mobileContainer.appendChild(li);
     };
 
